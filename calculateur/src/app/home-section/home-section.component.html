@@ -1,12 +1,20 @@
 <div class="mt-5 p-4"></div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 col-md-6 text-center">
+        <div class="col-12 col-md-5 text-center">
             <div class="container-fluid border border-3 rounded-3 shadow" style="padding: 0%;">
                 <div class="row m-1">
-                    <div class="p-5 border border-2 rounded-3 d-flex flex-column position-relative">
-                        <span class="position-absolute top-0 end-0 fs-3 fw-bold me-2">{{ input }}</span>
-                        <span class="position-absolute bottom-0 end-0 fs-3 fw-bold me-2">{{ output }}</span>
+                    <div class="p-5 border border-2 rounded-3 d-flex flex-column position-relative overflow-auto">
+                        <span class="position-absolute top-0 end-0 fs-3 fw-bold me-1">{{ input }}</span>
+                        <span class="position-absolute bottom-0 end-0 fs-3 fw-bold me-1" 
+                            [style.color]="output === 'Erreur'? '#dc3545': '#198754'">{{ output }}</span>
+                    </div>
+                </div>
+                <div class="row row-cols-4 g-1 m-1 justify-content-end">
+                    <div class="col text-end">
+                        <button class="btn btn-link rounded" type="button" id="reload" (click)="onReset()">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="row row-cols-4 g-1 m-1">
@@ -18,7 +26,7 @@
                     </div>
                     <div class="col">
                         <div class="card">
-                            <button class="btn btn-outline-primary" (click)="onGetValue('delete')" type="button">
+                            <button class="btn btn-outline-warning" (click)="onDelete()" type="button">
                                 <i class="fa-solid fa-delete-left"></i>
                             </button>
                         </div>
@@ -32,7 +40,7 @@
                     </div>
                     <div class="col">
                         <div class="card">
-                            <button class="btn btn-outline-primary" (click)="onGetValue('*')" type="button">
+                            <button class="btn btn-primary" (click)="onGetValue('*')" type="button">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
@@ -46,7 +54,7 @@
                     </div>
                     <div class="col">
                         <div class="card">
-                            <button class="btn btn-outline-primary" (click)="onGetValue('/')" type="button">
+                            <button class="btn btn-primary" (click)="onGetValue('/')" type="button">
                                 <i class="fa-solid fa-divide"></i>
                             </button>
                         </div>
@@ -59,21 +67,21 @@
                     </div>
                     <div class="col">
                         <div class="card">
-                            <button class="btn btn-outline-primary" (click)="onGetValue('+')" type="button">
+                            <button class="btn btn-primary" (click)="onGetValue('+')" type="button">
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card">
-                            <button class="btn btn-outline-primary" (click)="onGetValue('-')" type="button">
+                            <button class="btn btn-primary" (click)="onGetValue('-')" type="button">
                                 <i class="fa-solid fa-minus"></i>
                             </button>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card">
-                            <button class="btn btn-outline-primary" (click)="onGetValue('=')" type="button">
+                            <button class="btn btn-outline-success" (click)="onGetResult()" type="button">
                                 <i class="fa-solid fa-equals"></i>
                             </button>
                         </div>
